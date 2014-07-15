@@ -68,7 +68,7 @@ public class Engine extends Canvas implements Runnable{
 		
 		if(readMeConsole){
 			
-			//**Read me file fetch*/
+			//**Read me file fetch [OPTIONAL]*/
 			new URLTextFetcher("https://raw.githubusercontent.com/Aestrocorp/Graphics-Engine/master/Graphics%20Engine/resources/readme.txt");
 			
 		}
