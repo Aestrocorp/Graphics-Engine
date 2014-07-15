@@ -62,20 +62,20 @@ public class Engine extends Canvas implements Runnable{
 		if(licenseConsole){
 			
 			//**Please read this license or know what it means BEFORE you make games with it. I don't want any trouble.*/
-			new URLTextFetcher("https://raw.githubusercontent.com/Aestrocorp/Graphics-Engine/master/LICENSE");
+			new URLTextFetcher("https://raw.githubusercontent.com/Aestrocorp/Graphics-Engine/master/Graphics%20Engine/resources/LICENSE.txt");
 			
 		}
 		
 		if(readMeConsole){
 			
 			//**Read me file fetch*/
-			new URLTextFetcher("https://raw.githubusercontent.com/Aestrocorp/Graphics-Engine/master/README.md");
+			new URLTextFetcher("https://raw.githubusercontent.com/Aestrocorp/Graphics-Engine/master/Graphics%20Engine/resources/readme.txt");
 			
 		}
 		
 		if(autoVersionSearch){
 			
-			String getversion = new URLTextFetcher("https://raw.githubusercontent.com/Aestrocorp/Graphics-Engine/master/version%5Bmaster%5D").returnline();
+			String getversion = new URLTextFetcher("https://raw.githubusercontent.com/Aestrocorp/Graphics-Engine/master/Graphics%20Engine/resources/version%5Bmaster%5D").returnline();
 			if(!version.equals(getversion)){
 				JOptionPane.showMessageDialog(null, "New engine update available!", "Updater", JOptionPane.INFORMATION_MESSAGE);
 			}
@@ -85,8 +85,8 @@ public class Engine extends Canvas implements Runnable{
 		File readMeFile = new File("resources/readme.txt");
 		File licenseFile = new File("resources/LICENSE.txt");
 		
-		if(!readMeFile.exists()){ new URLFileFetcher("https://raw.githubusercontent.com/Aestrocorp/Graphics-Engine/master/README.md", "resources/readme.txt"); }
-		if(!licenseFile.exists()){ new URLFileFetcher("https://raw.githubusercontent.com/Aestrocorp/Graphics-Engine/master/LICENSE", "resources/LICENSE.txt"); }
+		if(!readMeFile.exists()){ new URLFileFetcher("https://raw.githubusercontent.com/Aestrocorp/Graphics-Engine/master/Graphics%20Engine/resources/readme.txt", "resources/readme.txt"); }
+		if(!licenseFile.exists()){ new URLFileFetcher("https://raw.githubusercontent.com/Aestrocorp/Graphics-Engine/master/Graphics%20Engine/resources/LICENSE.txt", "resources/LICENSE.txt"); }
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle(TITLE);
