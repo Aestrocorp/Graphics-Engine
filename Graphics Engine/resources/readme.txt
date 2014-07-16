@@ -8,4 +8,4 @@ WIP Graphics engine
 *Added URLTextFetcher class                                                   -Tested
 *Added main Engine class                                                      -Partially Tested
 *Added InputListener class -Currently only KeyListener                        -Not Tested
-*Added Configuration Reader for creating new tiles easily!					  -Tested
+*Added Configuration Reader for creating new tiles easily!                    -Tested
