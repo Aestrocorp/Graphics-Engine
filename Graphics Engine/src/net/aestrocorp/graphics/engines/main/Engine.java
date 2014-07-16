@@ -10,7 +10,8 @@ import java.util.LinkedList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import net.aestrocorp.graphics.engines.input.ConfigLoader;
+import net.aestrocorp.graphics.engines.config.ConfigLoader;
+import net.aestrocorp.graphics.engines.config.ConfigType;
 import net.aestrocorp.graphics.engines.input.InputListener;
 import net.aestrocorp.graphics.engines.input.URLFileFetcher;
 import net.aestrocorp.graphics.engines.input.URLTextFetcher;
@@ -37,23 +38,36 @@ public class Engine extends Canvas implements Runnable{
 	public boolean autoVersionSearch = false;
 	public String version = "1.0.0.0.0";
 	
+	boolean createConfigLater = false;
+	
 	public Engine(int width, int height, String title, boolean fullScreen){
 		
 		WIDTH = width;
 		HEIGHT = height;
 		TITLE = title;
-		
+				
 		File config = new File("resources/engine.cfg");
 		if(config.exists()){
 			
 			new ConfigLoader(true, this);
+			LinkedList<ConfigType> conT = ConfigLoader.configOptions;
+			
+			for(int i = 0; i < conT.size(); i++){
+				
+				ConfigType curCon = conT.get(i);
+				
+				if(curCon.optionName.equals("autoVersionSearch")){ autoVersionSearch = curCon.current; }else
+				if(curCon.optionName.equals("licenseConsole")){ licenseConsole = curCon.current; }else
+				if(curCon.optionName.equals("readMeConsole")){ readMeConsole = curCon.current; }
+				
+			}
 			
 		}else{
 			
 			try {
 				
 				config.createNewFile();
-				new ConfigLoader(false, this);
+				createConfigLater = true;
 				
 			} catch (IOException e) { e.printStackTrace(); }
 			
@@ -113,6 +127,12 @@ public class Engine extends Canvas implements Runnable{
 	public void start(){
 		
 		if(running){ return; }
+		
+		if(createConfigLater){
+			
+			new ConfigLoader(false, this);
+			
+		}
 		
 		//**To initialize and register all of the tiles*/
 		new TileManager();

@@ -19,7 +19,13 @@ public class TileManager {
 	//**For loading the tiles*/
 	public void init(){
 		
-		
+		for(int i = 0; i < tileList.size(); i++){
+			
+			Tile tile = tileList.get(i);
+			
+			System.out.println("\nRegistered tile: \nName: " + tile.getTileName() + "\nID:" + tile.getID());
+			
+		}
 		
 	}
 	
