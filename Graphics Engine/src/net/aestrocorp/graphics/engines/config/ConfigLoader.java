@@ -9,6 +9,7 @@ import java.util.LinkedList;
 
 import javax.swing.ImageIcon;
 
+import net.aestrocorp.graphics.engines.input.URLFileFetcher;
 import net.aestrocorp.graphics.engines.main.Engine;
 import net.aestrocorp.graphics.engines.tilemanagment.Tile;
 import net.aestrocorp.graphics.engines.tilemanagment.TileManager;
@@ -17,7 +18,7 @@ public class ConfigLoader {
 	
 	public static LinkedList<ConfigType> configOptions = new LinkedList<ConfigType>();
 	
-	@SuppressWarnings("resource")
+	@SuppressWarnings({ "resource" })
 	public ConfigLoader(boolean existed, Engine engine){
 		
 		if(!existed){
@@ -27,16 +28,9 @@ public class ConfigLoader {
 				File configFile = new File("resources/engine.cfg");
 				BufferedWriter configWriter = new BufferedWriter(new FileWriter(configFile, true));
 				
-				configWriter.write("autoVersionSearch false");
-				configWriter.newLine();
-				
-				configWriter.write("licenseConsole true");
-				configWriter.newLine();
-				
-				configWriter.write("readMeConsole true");
-				configWriter.newLine();
-				
 				configWriter.close();
+				
+				new URLFileFetcher("https://raw.githubusercontent.com/Aestrocorp/Graphics-Engine/master/Graphics%20Engine/resources/engine.cfg", "resources/engine.cfg");
 				
 			}catch(Exception e){ e.printStackTrace(); }
 			
