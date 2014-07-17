@@ -1,0 +1,15 @@
+#Download Config
+
+#This file is used to download other files. It can be used for updating purposes such as Image files or new configs
+#containing new tile data!
+
+#Example of the download code:
+
+#Download{
+#	
+#	URL: https://raw.githubusercontent.com/Aestrocorp/Graphics-Engine/master/Graphics%20Engine/resources/LICENSE.txt
+#	FileName: testdownload.txt
+#	NewDirectory: true
+#	DirectoryName: downloadtest/
+#	
+#}

@@ -20,7 +20,7 @@ public class FirstRun {
 		File downloadConfigDir = new File("downloadConfig/");
 		downloadConfigDir.mkdir();
 		
-		new UpdateConfigLoader("", "", this);
+		new UpdateConfigLoader("", "downloadConfig/downloadConfig.dcfg", this);
 		
 	}
 	
@@ -31,9 +31,12 @@ public class FirstRun {
 			File newDir = new File(info.DirectoryName);
 			newDir.mkdir();
 			
+			info.FileName = info.DirectoryName + info.FileName;
+			System.err.println("");
+			
 		}
 		
-		new URLFileFetcher(info.URL, info.FileName + info.extension);
+		new URLFileFetcher(info.URL, info.FileName);
 		
 	}
 	
