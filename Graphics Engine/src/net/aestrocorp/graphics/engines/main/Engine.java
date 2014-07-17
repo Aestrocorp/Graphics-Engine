@@ -60,7 +60,8 @@ public class Engine extends Canvas implements Runnable{
 				
 				if(curCon.optionName.equals("autoVersionSearch")){ autoVersionSearch = curCon.current; }else
 				if(curCon.optionName.equals("licenseConsole")){ licenseConsole = curCon.current; }else
-				if(curCon.optionName.equals("readMeConsole")){ readMeConsole = curCon.current; }
+				if(curCon.optionName.equals("readMeConsole")){ readMeConsole = curCon.current; }else
+				if(curCon.optionName.equals("firstRun")){ firstRun = curCon.current; }
 				
 			}
 			
@@ -68,6 +69,7 @@ public class Engine extends Canvas implements Runnable{
 			
 			try {
 				
+				config.mkdir();
 				config.createNewFile();
 				createConfigLater = true;
 				
@@ -95,6 +97,12 @@ public class Engine extends Canvas implements Runnable{
 			if(!version.equals(getversion)){
 				JOptionPane.showMessageDialog(null, "New engine update available!", "Updater", JOptionPane.INFORMATION_MESSAGE);
 			}
+			
+		}
+		
+		if(firstRun){
+			
+			JOptionPane.showMessageDialog(null, "Downloading required resources! Please do not close the program.", "Engine Syncronization", JOptionPane.INFORMATION_MESSAGE);
 			
 		}
 		
