@@ -48,8 +48,6 @@ public class Engine extends Canvas implements Runnable{
 		HEIGHT = height;
 		TITLE = title;
 		
-		new URLFileFetcher("", "default_res/");
-		
 		File config = new File("resources/engine.cfg");
 		File configDir = new File("resources/");
 		if(config.exists()){
@@ -79,12 +77,12 @@ public class Engine extends Canvas implements Runnable{
 			
 		}
 		
-//		if(firstRun){
-//			
-//			JOptionPane.showMessageDialog(null, "Downloading required resources! Please do not close the program.", "Engine Syncronization", JOptionPane.INFORMATION_MESSAGE);
-//			new FirstRun();
-//			
-//		}
+		if(firstRun){
+			
+			JOptionPane.showMessageDialog(null, "Downloading required resources! Please do not close the program.", "Engine Syncronization", JOptionPane.INFORMATION_MESSAGE);
+			new FirstRun();
+			
+		}
 		
 		if(licenseConsole){
 			
