@@ -31,6 +31,7 @@ public class ConfigLoader {
 				configWriter.close();
 				
 				new URLFileFetcher("https://raw.githubusercontent.com/Aestrocorp/Graphics-Engine/master/Graphics%20Engine/resources/engine.cfg", "resources/engine.cfg");
+				System.err.println("Downloaded [ engine.cfg ]");
 				
 			}catch(Exception e){ e.printStackTrace(); }
 			

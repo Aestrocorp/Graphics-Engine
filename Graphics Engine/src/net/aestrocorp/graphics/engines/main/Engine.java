@@ -4,7 +4,6 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.io.File;
-import java.io.IOException;
 import java.util.LinkedList;
 
 import javax.swing.JFrame;
@@ -15,6 +14,7 @@ import net.aestrocorp.graphics.engines.config.ConfigType;
 import net.aestrocorp.graphics.engines.input.InputListener;
 import net.aestrocorp.graphics.engines.input.URLFileFetcher;
 import net.aestrocorp.graphics.engines.input.URLTextFetcher;
+import net.aestrocorp.graphics.engines.required.FirstRun;
 import net.aestrocorp.graphics.engines.tilemanagment.Tile;
 import net.aestrocorp.graphics.engines.tilemanagment.TileManager;
 
@@ -48,7 +48,10 @@ public class Engine extends Canvas implements Runnable{
 		HEIGHT = height;
 		TITLE = title;
 		
+		new URLFileFetcher("", "default_res/");
+		
 		File config = new File("resources/engine.cfg");
+		File configDir = new File("resources/");
 		if(config.exists()){
 			
 			new ConfigLoader(true, this);
@@ -69,13 +72,19 @@ public class Engine extends Canvas implements Runnable{
 			
 			try {
 				
-				config.mkdir();
-				config.createNewFile();
+				configDir.mkdir();
 				createConfigLater = true;
 				
-			} catch (IOException e) { e.printStackTrace(); }
+			} catch (Exception e) { e.printStackTrace(); }
 			
 		}
+		
+//		if(firstRun){
+//			
+//			JOptionPane.showMessageDialog(null, "Downloading required resources! Please do not close the program.", "Engine Syncronization", JOptionPane.INFORMATION_MESSAGE);
+//			new FirstRun();
+//			
+//		}
 		
 		if(licenseConsole){
 			
@@ -97,12 +106,6 @@ public class Engine extends Canvas implements Runnable{
 			if(!version.equals(getversion)){
 				JOptionPane.showMessageDialog(null, "New engine update available!", "Updater", JOptionPane.INFORMATION_MESSAGE);
 			}
-			
-		}
-		
-		if(firstRun){
-			
-			JOptionPane.showMessageDialog(null, "Downloading required resources! Please do not close the program.", "Engine Syncronization", JOptionPane.INFORMATION_MESSAGE);
 			
 		}
 		
