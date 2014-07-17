@@ -40,12 +40,14 @@ public class Engine extends Canvas implements Runnable{
 	
 	boolean createConfigLater = false;
 	
+	boolean firstRun = true;
+	
 	public Engine(int width, int height, String title, boolean fullScreen){
 		
 		WIDTH = width;
 		HEIGHT = height;
 		TITLE = title;
-				
+		
 		File config = new File("resources/engine.cfg");
 		if(config.exists()){
 			

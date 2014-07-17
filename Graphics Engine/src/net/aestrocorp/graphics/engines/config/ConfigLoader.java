@@ -41,6 +41,7 @@ public class ConfigLoader {
 				configOptions.add(new ConfigType(true, "licenseConsole"));
 				configOptions.add(new ConfigType(true, "readMeConsole"));
 				configOptions.add(new ConfigType(false, "autoVersionSearch"));
+				configOptions.add(new ConfigType(true, "firstRun"));
 				
 				File configFile = new File("resources/engine.cfg");
 				BufferedReader configReader = new BufferedReader(new FileReader(configFile));
@@ -81,6 +82,7 @@ public class ConfigLoader {
 							
 						}else if(curLine.startsWith(curCfg.optionName)){
 							
+							if(curCfg.optionName.equals("firstRun")){ curCfg.current = false; }else
 							if(curLine.endsWith("true")){ curCfg.current = true; }else{ curCfg.current = false; }
 							
 						}
